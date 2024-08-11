@@ -67,7 +67,7 @@ def main():
     dolar = elemento.get_attribute('value')
 
     print(f'{cores['verde']}---> Cotação Realizada Com Sucesso!{cores['resetar']}')
-    sleep(1)
+    sleep(2)
 
     # Data da cotação
     data_atual = datetime.now().strftime('%Y-%m-%d')
@@ -78,7 +78,11 @@ def main():
     sleep(1)
 
     # ○ Print(imagem) do site onde a cotação foi realizada
-    caminho_imagem = f'imagens/cotacao_{data_atual}.png'
+    user_profile = os.getenv('USERPROFILE')
+    desktop_path = os.path.join(user_profile, 'Desktop')
+    caminho_imagem = os.path.join(desktop_path, f'cotacao_{data_atual}.png')
+
+    #caminho_imagem = f'cotacao_{data_atual}.png'
     driver.save_screenshot(caminho_imagem)
 
     print(f'{cores['ciano']}---> Print da Cotação Realizado Com Sucesso!{cores['resetar']}')
